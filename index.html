@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Code &amp; Words – My English Journey</title>
+<style>
+:root{--bg:#fbf7f0;--card:#fff;--ink:#22201c;--mute:#6b665d;--acc:#e4572e;--acc2:#2e86ab;--line:#e8e0d2;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#17161a;--card:#222126;--ink:#f2eee6;--mute:#a8a296;--acc:#ff7a52;--acc2:#5bb4d6;--line:#37353c}}
+:root[data-theme="dark"]{--bg:#17161a;--card:#222126;--ink:#f2eee6;--mute:#a8a296;--acc:#ff7a52;--acc2:#5bb4d6;--line:#37353c}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.65 Georgia,"Times New Roman",serif}
+header{padding:48px 20px 28px;text-align:center;border-bottom:3px solid var(--acc)}
+header h1{font:800 clamp(2rem,6vw,3.2rem)/1.1 "Trebuchet MS",Arial,sans-serif;margin:0}
+header h1 span{color:var(--acc)}
+header p{color:var(--mute);margin:10px auto 0;max-width:560px}
+nav{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;padding:18px 12px;position:sticky;top:env(safe-area-inset-top,0px);background:var(--bg);z-index:5;border-bottom:1px solid var(--line)}
+nav button{font:600 .85rem "Trebuchet MS",Arial,sans-serif;border:1.5px solid var(--line);background:var(--card);color:var(--ink);padding:7px 13px;border-radius:99px;cursor:pointer}
+nav button.on{background:var(--acc);border-color:var(--acc);color:#fff}
+main{max-width:720px;margin:0 auto;padding:28px 18px 60px}
+article{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:26px;overflow:hidden}
+.tag{display:inline-block;font:700 .72rem "Trebuchet MS",Arial,sans-serif;letter-spacing:.08em;text-transform:uppercase;color:var(--acc2)}
+h2{font:800 1.8rem/1.2 "Trebuchet MS",Arial,sans-serif;margin:.3em 0 .1em}
+.meta{color:var(--mute);font-size:.85rem;margin-bottom:14px}
+.emoji{font-size:3rem}
+blockquote{margin:16px 0;padding:10px 16px;border-left:4px solid var(--acc);background:rgba(228,87,46,.08)}
+.vocab{display:flex;flex-wrap:wrap;gap:6px;margin:14px 0}
+.vocab span{background:rgba(46,134,171,.14);color:var(--acc2);padding:3px 10px;border-radius:8px;font:600 .82rem "Trebuchet MS",Arial,sans-serif}
+.listen{font:700 .9rem "Trebuchet MS",Arial,sans-serif;background:var(--acc2);color:#fff;border:0;border-radius:10px;padding:9px 16px;cursor:pointer;margin-right:8px}
+.pn{display:flex;justify-content:space-between;margin-top:22px}
+.pn button{font:700 .9rem "Trebuchet MS",Arial,sans-serif;background:none;border:0;color:var(--acc);cursor:pointer}
+.box{border:1.5px dashed var(--line);border-radius:12px;padding:12px 16px;margin-top:16px;font-size:.92rem;color:var(--mute)}
+footer{text-align:center;color:var(--mute);font-size:.85rem;padding:20px}
+#theme{position:absolute;top:calc(12px + env(safe-area-inset-top,0px));right:14px;background:none;border:1px solid var(--line);border-radius:8px;color:var(--ink);cursor:pointer;padding:4px 9px}
+</style>
+</head>
+<body>
+<button id="theme" aria-label="Toggle theme">◐</button>
+<header>
+  <h1>Code <span>&amp;</span> Words</h1>
+  <p>A software developer's blog about learning English: family, hobbies, work, travel and the world around me.</p>
+</header>
+<nav id="nav"></nav>
+<main><article id="post"></article></main>
+<footer>Software Analysis and Development · SENA · GA4-240202501-AA1-EV03</footer>
+
+<script>
+var ME="Your Name"; // change me
+var posts=[
+{e:"👋",tag:"Family",t:"Meet My Family",m:"Post 1 · About me",
+ b:["Hello, everyone! My name is "+ME+" and I'm a software development student from Colombia. I live in Bogotá with my parents and my younger sister.","My mother is a kind and hard-working nurse. My father is a taxi driver who knows every street in the city. My sister is fifteen and she loves K-pop. We have a small dog called Toby, and he is part of the family too.","On Sundays we have lunch together. We usually eat ajiaco, a traditional soup from Bogotá, and we talk about our week."],
+ q:"“Family is not an important thing. It's everything.”",
+ v:["parents","sister","hard-working","kind","lunch together","traditional"],
+ s:"Hello everyone. I live in Bogota with my parents, my younger sister and my dog Toby. On Sundays we have lunch together."},
+{e:"🎸",tag:"Hobbies & interests",t:"What I Do for Fun",m:"Post 2 · Free time",
+ b:["When I'm not coding, I play the guitar. I started two years ago and I can already play a few songs. I also enjoy cycling on the Ciclovía on Sunday mornings, when the city closes the main streets to cars.","I'm interested in video games, too. I like strategy games because they make me think. Last month I built a small game with JavaScript, and my friends tested it!","My favourite hobby is learning new things. Right now, I'm studying English every day for thirty minutes."],
+ q:"“I'm not a hobby collector. I'm a curious person.”",
+ v:["free time","cycling","I'm interested in","I enjoy","strategy games","to be keen on"],
+ s:"In my free time I play the guitar and I go cycling on Sunday mornings. I'm also interested in video games."},
+{e:"💻",tag:"Work",t:"A Day in the Life of a Future Developer",m:"Post 3 · Work & study",
+ b:["I'm training to become a software analyst and developer. A normal day starts at seven o'clock. First, I check my emails and my task board. Then I write code, test it and fix bugs.","I work in a team. Every morning we have a short meeting called a daily stand-up. We say what we did yesterday, what we will do today and if we have any problems.","In the future, I would like to work for an international company. That's why English is so important for me: documentation, meetings and interviews are all in English."],
+ q:"“Good code is its own best documentation.”",
+ v:["bug","team","meeting","deadline","interview","documentation","I would like to"],
+ s:"I am training to become a software developer. Every day I write code, test it and fix bugs with my team."},
+{e:"⛪",tag:"Travel",t:"Zipaquirá: A Cathedral Made of Salt",m:"Post 4 · A tourist site in my region",
+ b:["If you visit Bogotá, you must see the Salt Cathedral of Zipaquirá. It is about one hour north of the city and you can get there by train or by bus.","The cathedral is inside an old salt mine, almost two hundred metres underground. Tunnels, crosses and soft blue lights create a magical atmosphere. It is very quiet and a little bit cold, so bring a jacket.","After the tour, walk through the town. The main square is lovely and there are many restaurants. Try the local roast potatoes and a hot chocolate. I went last year with my family, and it was one of our best trips."],
+ q:"“The best trips are the ones close to home.”",
+ v:["underground","tour","tunnel","atmosphere","bring a jacket","local food","square"],
+ s:"The Salt Cathedral of Zipaquira is inside an old salt mine. It is quiet, beautiful and very close to Bogota."},
+{e:"🌍",tag:"Current events",t:"Technology in the News: AI and Our Jobs",m:"Post 5 · Today's world",
+ b:["Artificial intelligence is everywhere in the news today. Some people are afraid that AI will take their jobs. Others believe it will create new opportunities.","As a future developer, I think both ideas are partly true. AI can write simple code quickly, but people still need to understand problems, design solutions and take responsibility for results.","My opinion is simple: we should use AI as a tool, not as a replacement for thinking. Learning, creativity and teamwork will always be important."],
+ q:"“Tools change. The need to learn does not.”",
+ v:["artificial intelligence","opportunities","replace","responsibility","In my opinion","tool"],
+ s:"Artificial intelligence is in the news every day. In my opinion, we should use it as a tool, not as a replacement for thinking."},
+{e:"🔎",tag:"Critical thinking & media literacy",t:"Is It True? Thinking Critically Online",m:"Post 6 · Course topic",
+ b:["Every day we see hundreds of headlines, videos and posts. But not everything we read online is true. Media literacy means being able to find, analyse and evaluate information.","Here are four questions I ask before I share anything. Who wrote this? What is the source? Is there evidence? Can I find the same news on other reliable websites?","Be careful with clickbait headlines, fake photos and messages that say “Share this now!”. They are designed to create strong emotions, not to inform you. Fact-checking websites can help you confirm a story.","Critical thinking is a habit: pause, question, verify and then decide."],
+ q:"“Don't believe everything you read. Check it first.”",
+ v:["fake news","source","evidence","reliable","clickbait","fact-check","headline","bias"],
+ s:"Before I share a news story, I ask: who wrote it, what is the source, and is there evidence? Critical thinking is a habit."},
+{e:"⚖️",tag:"Crime & punishment",t:"Crime and Punishment: What Is Justice?",m:"Post 7 · Course topic",
+ b:["Every society has laws, and when someone breaks the law, they commit a crime. Crimes can be minor, like stealing a bike, or serious, like murder. In the digital world, we also have cybercrimes such as hacking, identity theft and online fraud.","A person who is accused of a crime goes to court. A judge or a jury listens to the evidence and decides if the person is guilty or innocent. If they are guilty, the punishment can be a fine, community service or prison.","There is an important debate: should punishment be only a penalty, or should it help people change? I believe that education and rehabilitation can reduce crime in the long term.","As a developer, I also think about my responsibility: protecting people's data is a way to prevent crime."],
+ q:"“Justice is not only about punishing. It's about preventing.”",
+ v:["crime","law","court","judge","guilty","innocent","fine","prison","rehabilitation","cybercrime"],
+ s:"A person who breaks the law commits a crime. If the person is guilty, the punishment can be a fine, community service or prison. I believe rehabilitation can reduce crime."}
+];
+var cur=0,nav=document.getElementById('nav'),art=document.getElementById('post');
+posts.forEach(function(p,i){var b=document.createElement('button');b.textContent=(i+1)+'. '+p.tag.split(' &')[0];b.onclick=function(){show(i)};nav.appendChild(b)});
+function esc(s){return s.replace(/&/g,'&amp;').replace(/</g,'&lt;')}
+function show(i){
+  cur=i;var p=posts[i];
+  [].forEach.call(nav.children,function(b,j){b.className=j===i?'on':''});
+  art.innerHTML='<div class="emoji">'+p.e+'</div><span class="tag">'+esc(p.tag)+'</span><h2>'+esc(p.t)+'</h2><div class="meta">'+esc(p.m)+'</div>'
+   +p.b.map(function(x){return '<p>'+esc(x)+'</p>'}).join('')
+   +'<blockquote>'+esc(p.q)+'</blockquote>'
+   +'<strong>Key vocabulary</strong><div class="vocab">'+p.v.map(function(x){return '<span>'+esc(x)+'</span>'}).join('')+'</div>'
+   +'<button class="listen" id="lb">🔊 Listen</button><button class="listen" id="ls" style="background:var(--acc)">🐢 Slow</button>'
+   +'<div class="box"><strong>🎤 My speaking practice:</strong> “'+esc(p.s)+'”<br>Pronunciation tip: link my own audio/video recording for this post here.</div>'
+   +'<div class="pn"><button '+(i?'':'disabled style="opacity:.3"')+' onclick="show('+(i-1)+')">← Previous</button><button '+(i<posts.length-1?'':'disabled style="opacity:.3"')+' onclick="show('+(i+1)+')">Next →</button></div>';
+  document.getElementById('lb').onclick=function(){say(p.b.join(' '),1)};
+  document.getElementById('ls').onclick=function(){say(p.s,.7)};
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+function say(t,r){try{speechSynthesis.cancel();var u=new SpeechSynthesisUtterance(t);u.lang='en-US';u.rate=r;speechSynthesis.speak(u)}catch(e){}}
+document.getElementById('theme').onclick=function(){var r=document.documentElement,d=r.getAttribute('data-theme')==='dark'||(!r.getAttribute('data-theme')&&matchMedia('(prefers-color-scheme:dark)').matches);r.setAttribute('data-theme',d?'light':'dark')};
+show(0);
+</script>
+</body>
+</html>
